@@ -46,6 +46,18 @@ function confirmacao(setorTitulo) {
     return `Obrigado! Encaminhando voce para o setor ${setorTitulo} da Mercoplasa. Nosso time entra em contato em breve.`;
 }
 
+// ---------- Corrige numeros brasileiros sem o 9o digito do celular ----------
+function normalizarNumeroBR(numero) {
+        if (numero && numero.startsWith("55") && numero.length === 12) {
+                    const ddd = numero.slice(2, 4);
+                    const local = numero.slice(4);
+                    if (local.length === 8) {
+                                    return "55" + ddd + "9" + local;
+                    }
+        }
+        return numero;
+}
+
 // ---------- Verificacao do webhook ----------
 app.get("/webhook", (req, res) => {
     const mode = req.query["hub.mode"];
@@ -70,7 +82,7 @@ app.post("/webhook", async (req, res) => {
                  const message = value?.messages?.[0];
                  if (!message) return;
 
-      const from = message.from;
+      const from =normalizarNumeroBR(message.from);
                  const nomeCliente = value?.contacts?.[0]?.profile?.name || "";
 
       const textoRecebido = extrairTexto(message);
