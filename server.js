@@ -113,14 +113,14 @@ app.post("/webhook", async (req, res) => {
                                                                        return;
                                            }
 
-                                           await enviarTexto(from, "Perfeito! Para iniciar seu atendimento, me informe o CNPJ ou CPF da empresa/cliente:");
+                                                                                      await enviarTexto(from, "Poderia nos informar seu CNPJ/CPF?");
                                            conversas.set(from, { etapa: "comercial_cnpj", dados: {} });
                                            return;
                          }
 
                          if (estado.etapa === "comercial_cnpj") {
                                            estado.dados.cnpjCpf = textoRecebido;
-                                           await enviarTexto(from, "Perfeito! Agora me informe o nome (ou razao social):");
+                                                                                      await enviarTexto(from, "Qual seu nome?");
                                            conversas.set(from, { etapa: "comercial_nome", dados: estado.dados });
                                            return;
                          }
