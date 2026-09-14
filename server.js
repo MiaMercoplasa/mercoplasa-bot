@@ -31,8 +31,9 @@ const conversas = new Map(); // wa_id -> { etapa, setor }
 // ---------- Conteudo ----------
 const SAUDACAO =
         "Bem-vindo a Mercoplasa \u{1F499}\n" +
-        "Me chamo MIA, assistente virtual da Mercoplasa - 24 anos de experiencia na fabricacao de caixas plasticas em PP e PEAD.\n\n" +
-        "Sera um prazer atender sua empresa! Selecione abaixo o setor desejado:";
+        "Me chamo MIA, assistente virtual da Mercoplasa.\n" +
+                "Sera um prazer atender sua empresa!\n" +
+                "Selecione abaixo o setor desejado:";
 
 const MENSAGEM_FINAL_COMERCIAL =
         "Grata pelas informacoes!\n" +
